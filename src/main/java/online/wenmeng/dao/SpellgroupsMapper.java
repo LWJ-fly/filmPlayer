@@ -3,9 +3,11 @@ package online.wenmeng.dao;
 import online.wenmeng.bean.Spellgroups;
 import online.wenmeng.bean.SpellgroupsExample;
 import org.apache.ibatis.annotations.Param;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
+@Repository
 public interface SpellgroupsMapper {
     long countByExample(SpellgroupsExample example);
 

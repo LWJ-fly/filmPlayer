@@ -3,9 +3,11 @@ package online.wenmeng.dao;
 import online.wenmeng.bean.Movies;
 import online.wenmeng.bean.MoviesExample;
 import org.apache.ibatis.annotations.Param;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
+@Repository
 public interface MoviesMapper {
     long countByExample(MoviesExample example);
 

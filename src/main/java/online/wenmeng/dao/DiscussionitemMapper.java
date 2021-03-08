@@ -3,9 +3,10 @@ package online.wenmeng.dao;
 import online.wenmeng.bean.Discussionitem;
 import online.wenmeng.bean.DiscussionitemExample;
 import org.apache.ibatis.annotations.Param;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
-
+@Repository
 public interface DiscussionitemMapper {
     long countByExample(DiscussionitemExample example);
 

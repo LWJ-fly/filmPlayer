@@ -3,9 +3,12 @@ package online.wenmeng.dao;
 import online.wenmeng.bean.Comments;
 import online.wenmeng.bean.CommentsExample;
 import org.apache.ibatis.annotations.Param;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
+
+@Repository
 public interface CommentsMapper {
     long countByExample(CommentsExample example);
 
