@@ -1,0 +1,258 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="online.wenmeng.dao.SpellgroupsMapper">
+  <resultMap id="BaseResultMap" type="online.wenmeng.bean.Spellgroups">
+    <id column="spellGroupId" jdbcType="INTEGER" property="spellgroupid" />
+    <result column="userId" jdbcType="INTEGER" property="userid" />
+    <result column="filmTitle" jdbcType="VARCHAR" property="filmtitle" />
+    <result column="content" jdbcType="VARCHAR" property="content" />
+    <result column="filmCount" jdbcType="INTEGER" property="filmcount" />
+    <result column="realCount" jdbcType="INTEGER" property="realcount" />
+    <result column="startTime" jdbcType="TIMESTAMP" property="starttime" />
+    <result column="endTime" jdbcType="TIMESTAMP" property="endtime" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    spellGroupId, userId, filmTitle, content, filmCount, realCount, startTime, endTime
+  </sql>
+  <select id="selectByExample" parameterType="online.wenmeng.bean.SpellgroupsExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from spellgroups
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from spellgroups
+    where spellGroupId = #{spellgroupid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from spellgroups
+    where spellGroupId = #{spellgroupid,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="online.wenmeng.bean.SpellgroupsExample">
+    delete from spellgroups
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="online.wenmeng.bean.Spellgroups">
+    insert into spellgroups (spellGroupId, userId, filmTitle, 
+      content, filmCount, realCount, 
+      startTime, endTime)
+    values (#{spellgroupid,jdbcType=INTEGER}, #{userid,jdbcType=INTEGER}, #{filmtitle,jdbcType=VARCHAR}, 
+      #{content,jdbcType=VARCHAR}, #{filmcount,jdbcType=INTEGER}, #{realcount,jdbcType=INTEGER}, 
+      #{starttime,jdbcType=TIMESTAMP}, #{endtime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="online.wenmeng.bean.Spellgroups">
+    insert into spellgroups
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="spellgroupid != null">
+        spellGroupId,
+      </if>
+      <if test="userid != null">
+        userId,
+      </if>
+      <if test="filmtitle != null">
+        filmTitle,
+      </if>
+      <if test="content != null">
+        content,
+      </if>
+      <if test="filmcount != null">
+        filmCount,
+      </if>
+      <if test="realcount != null">
+        realCount,
+      </if>
+      <if test="starttime != null">
+        startTime,
+      </if>
+      <if test="endtime != null">
+        endTime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="spellgroupid != null">
+        #{spellgroupid,jdbcType=INTEGER},
+      </if>
+      <if test="userid != null">
+        #{userid,jdbcType=INTEGER},
+      </if>
+      <if test="filmtitle != null">
+        #{filmtitle,jdbcType=VARCHAR},
+      </if>
+      <if test="content != null">
+        #{content,jdbcType=VARCHAR},
+      </if>
+      <if test="filmcount != null">
+        #{filmcount,jdbcType=INTEGER},
+      </if>
+      <if test="realcount != null">
+        #{realcount,jdbcType=INTEGER},
+      </if>
+      <if test="starttime != null">
+        #{starttime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="endtime != null">
+        #{endtime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="online.wenmeng.bean.SpellgroupsExample" resultType="java.lang.Long">
+    select count(*) from spellgroups
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update spellgroups
+    <set>
+      <if test="record.spellgroupid != null">
+        spellGroupId = #{record.spellgroupid,jdbcType=INTEGER},
+      </if>
+      <if test="record.userid != null">
+        userId = #{record.userid,jdbcType=INTEGER},
+      </if>
+      <if test="record.filmtitle != null">
+        filmTitle = #{record.filmtitle,jdbcType=VARCHAR},
+      </if>
+      <if test="record.content != null">
+        content = #{record.content,jdbcType=VARCHAR},
+      </if>
+      <if test="record.filmcount != null">
+        filmCount = #{record.filmcount,jdbcType=INTEGER},
+      </if>
+      <if test="record.realcount != null">
+        realCount = #{record.realcount,jdbcType=INTEGER},
+      </if>
+      <if test="record.starttime != null">
+        startTime = #{record.starttime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.endtime != null">
+        endTime = #{record.endtime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update spellgroups
+    set spellGroupId = #{record.spellgroupid,jdbcType=INTEGER},
+      userId = #{record.userid,jdbcType=INTEGER},
+      filmTitle = #{record.filmtitle,jdbcType=VARCHAR},
+      content = #{record.content,jdbcType=VARCHAR},
+      filmCount = #{record.filmcount,jdbcType=INTEGER},
+      realCount = #{record.realcount,jdbcType=INTEGER},
+      startTime = #{record.starttime,jdbcType=TIMESTAMP},
+      endTime = #{record.endtime,jdbcType=TIMESTAMP}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="online.wenmeng.bean.Spellgroups">
+    update spellgroups
+    <set>
+      <if test="userid != null">
+        userId = #{userid,jdbcType=INTEGER},
+      </if>
+      <if test="filmtitle != null">
+        filmTitle = #{filmtitle,jdbcType=VARCHAR},
+      </if>
+      <if test="content != null">
+        content = #{content,jdbcType=VARCHAR},
+      </if>
+      <if test="filmcount != null">
+        filmCount = #{filmcount,jdbcType=INTEGER},
+      </if>
+      <if test="realcount != null">
+        realCount = #{realcount,jdbcType=INTEGER},
+      </if>
+      <if test="starttime != null">
+        startTime = #{starttime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="endtime != null">
+        endTime = #{endtime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where spellGroupId = #{spellgroupid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="online.wenmeng.bean.Spellgroups">
+    update spellgroups
+    set userId = #{userid,jdbcType=INTEGER},
+      filmTitle = #{filmtitle,jdbcType=VARCHAR},
+      content = #{content,jdbcType=VARCHAR},
+      filmCount = #{filmcount,jdbcType=INTEGER},
+      realCount = #{realcount,jdbcType=INTEGER},
+      startTime = #{starttime,jdbcType=TIMESTAMP},
+      endTime = #{endtime,jdbcType=TIMESTAMP}
+    where spellGroupId = #{spellgroupid,jdbcType=INTEGER}
+  </update>
+</mapper>

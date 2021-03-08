@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="online.wenmeng.dao.DiscussionMapper">
+  <resultMap id="BaseResultMap" type="online.wenmeng.bean.Discussion">
+    <id column="discussionId" jdbcType="INTEGER" property="discussionid" />
+    <result column="mainUserId" jdbcType="INTEGER" property="mainuserid" />
+    <result column="filmTitle" jdbcType="VARCHAR" property="filmtitle" />
+    <result column="content" jdbcType="VARCHAR" property="content" />
+    <result column="filmCount" jdbcType="VARCHAR" property="filmcount" />
+    <result column="startTime" jdbcType="TIMESTAMP" property="starttime" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    discussionId, mainUserId, filmTitle, content, filmCount, startTime
+  </sql>
+  <select id="selectByExample" parameterType="online.wenmeng.bean.DiscussionExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from discussion
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from discussion
+    where discussionId = #{discussionid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from discussion
+    where discussionId = #{discussionid,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="online.wenmeng.bean.DiscussionExample">
+    delete from discussion
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="online.wenmeng.bean.Discussion">
+    insert into discussion (discussionId, mainUserId, filmTitle, 
+      content, filmCount, startTime
+      )
+    values (#{discussionid,jdbcType=INTEGER}, #{mainuserid,jdbcType=INTEGER}, #{filmtitle,jdbcType=VARCHAR}, 
+      #{content,jdbcType=VARCHAR}, #{filmcount,jdbcType=VARCHAR}, #{starttime,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="online.wenmeng.bean.Discussion">
+    insert into discussion
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="discussionid != null">
+        discussionId,
+      </if>
+      <if test="mainuserid != null">
+        mainUserId,
+      </if>
+      <if test="filmtitle != null">
+        filmTitle,
+      </if>
+      <if test="content != null">
+        content,
+      </if>
+      <if test="filmcount != null">
+        filmCount,
+      </if>
+      <if test="starttime != null">
+        startTime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="discussionid != null">
+        #{discussionid,jdbcType=INTEGER},
+      </if>
+      <if test="mainuserid != null">
+        #{mainuserid,jdbcType=INTEGER},
+      </if>
+      <if test="filmtitle != null">
+        #{filmtitle,jdbcType=VARCHAR},
+      </if>
+      <if test="content != null">
+        #{content,jdbcType=VARCHAR},
+      </if>
+      <if test="filmcount != null">
+        #{filmcount,jdbcType=VARCHAR},
+      </if>
+      <if test="starttime != null">
+        #{starttime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="online.wenmeng.bean.DiscussionExample" resultType="java.lang.Long">
+    select count(*) from discussion
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update discussion
+    <set>
+      <if test="record.discussionid != null">
+        discussionId = #{record.discussionid,jdbcType=INTEGER},
+      </if>
+      <if test="record.mainuserid != null">
+        mainUserId = #{record.mainuserid,jdbcType=INTEGER},
+      </if>
+      <if test="record.filmtitle != null">
+        filmTitle = #{record.filmtitle,jdbcType=VARCHAR},
+      </if>
+      <if test="record.content != null">
+        content = #{record.content,jdbcType=VARCHAR},
+      </if>
+      <if test="record.filmcount != null">
+        filmCount = #{record.filmcount,jdbcType=VARCHAR},
+      </if>
+      <if test="record.starttime != null">
+        startTime = #{record.starttime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update discussion
+    set discussionId = #{record.discussionid,jdbcType=INTEGER},
+      mainUserId = #{record.mainuserid,jdbcType=INTEGER},
+      filmTitle = #{record.filmtitle,jdbcType=VARCHAR},
+      content = #{record.content,jdbcType=VARCHAR},
+      filmCount = #{record.filmcount,jdbcType=VARCHAR},
+      startTime = #{record.starttime,jdbcType=TIMESTAMP}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="online.wenmeng.bean.Discussion">
+    update discussion
+    <set>
+      <if test="mainuserid != null">
+        mainUserId = #{mainuserid,jdbcType=INTEGER},
+      </if>
+      <if test="filmtitle != null">
+        filmTitle = #{filmtitle,jdbcType=VARCHAR},
+      </if>
+      <if test="content != null">
+        content = #{content,jdbcType=VARCHAR},
+      </if>
+      <if test="filmcount != null">
+        filmCount = #{filmcount,jdbcType=VARCHAR},
+      </if>
+      <if test="starttime != null">
+        startTime = #{starttime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where discussionId = #{discussionid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="online.wenmeng.bean.Discussion">
+    update discussion
+    set mainUserId = #{mainuserid,jdbcType=INTEGER},
+      filmTitle = #{filmtitle,jdbcType=VARCHAR},
+      content = #{content,jdbcType=VARCHAR},
+      filmCount = #{filmcount,jdbcType=VARCHAR},
+      startTime = #{starttime,jdbcType=TIMESTAMP}
+    where discussionId = #{discussionid,jdbcType=INTEGER}
+  </update>
+</mapper>

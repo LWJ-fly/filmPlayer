@@ -1,0 +1,243 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="online.wenmeng.dao.CommentsMapper">
+  <resultMap id="BaseResultMap" type="online.wenmeng.bean.Comments">
+    <id column="commentsId" jdbcType="INTEGER" property="commentsid" />
+    <result column="userId" jdbcType="INTEGER" property="userid" />
+    <result column="moveId" jdbcType="INTEGER" property="moveid" />
+    <result column="uesrAvatar" jdbcType="VARCHAR" property="uesravatar" />
+    <result column="textValue" jdbcType="VARCHAR" property="textvalue" />
+    <result column="filmScore" jdbcType="DOUBLE" property="filmscore" />
+    <result column="filmStars" jdbcType="INTEGER" property="filmstars" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    commentsId, userId, moveId, uesrAvatar, textValue, filmScore, filmStars
+  </sql>
+  <select id="selectByExample" parameterType="online.wenmeng.bean.CommentsExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from comments
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from comments
+    where commentsId = #{commentsid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from comments
+    where commentsId = #{commentsid,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="online.wenmeng.bean.CommentsExample">
+    delete from comments
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="online.wenmeng.bean.Comments">
+    insert into comments (commentsId, userId, moveId, 
+      uesrAvatar, textValue, filmScore, 
+      filmStars)
+    values (#{commentsid,jdbcType=INTEGER}, #{userid,jdbcType=INTEGER}, #{moveid,jdbcType=INTEGER}, 
+      #{uesravatar,jdbcType=VARCHAR}, #{textvalue,jdbcType=VARCHAR}, #{filmscore,jdbcType=DOUBLE}, 
+      #{filmstars,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="online.wenmeng.bean.Comments">
+    insert into comments
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="commentsid != null">
+        commentsId,
+      </if>
+      <if test="userid != null">
+        userId,
+      </if>
+      <if test="moveid != null">
+        moveId,
+      </if>
+      <if test="uesravatar != null">
+        uesrAvatar,
+      </if>
+      <if test="textvalue != null">
+        textValue,
+      </if>
+      <if test="filmscore != null">
+        filmScore,
+      </if>
+      <if test="filmstars != null">
+        filmStars,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="commentsid != null">
+        #{commentsid,jdbcType=INTEGER},
+      </if>
+      <if test="userid != null">
+        #{userid,jdbcType=INTEGER},
+      </if>
+      <if test="moveid != null">
+        #{moveid,jdbcType=INTEGER},
+      </if>
+      <if test="uesravatar != null">
+        #{uesravatar,jdbcType=VARCHAR},
+      </if>
+      <if test="textvalue != null">
+        #{textvalue,jdbcType=VARCHAR},
+      </if>
+      <if test="filmscore != null">
+        #{filmscore,jdbcType=DOUBLE},
+      </if>
+      <if test="filmstars != null">
+        #{filmstars,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="online.wenmeng.bean.CommentsExample" resultType="java.lang.Long">
+    select count(*) from comments
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update comments
+    <set>
+      <if test="record.commentsid != null">
+        commentsId = #{record.commentsid,jdbcType=INTEGER},
+      </if>
+      <if test="record.userid != null">
+        userId = #{record.userid,jdbcType=INTEGER},
+      </if>
+      <if test="record.moveid != null">
+        moveId = #{record.moveid,jdbcType=INTEGER},
+      </if>
+      <if test="record.uesravatar != null">
+        uesrAvatar = #{record.uesravatar,jdbcType=VARCHAR},
+      </if>
+      <if test="record.textvalue != null">
+        textValue = #{record.textvalue,jdbcType=VARCHAR},
+      </if>
+      <if test="record.filmscore != null">
+        filmScore = #{record.filmscore,jdbcType=DOUBLE},
+      </if>
+      <if test="record.filmstars != null">
+        filmStars = #{record.filmstars,jdbcType=INTEGER},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update comments
+    set commentsId = #{record.commentsid,jdbcType=INTEGER},
+      userId = #{record.userid,jdbcType=INTEGER},
+      moveId = #{record.moveid,jdbcType=INTEGER},
+      uesrAvatar = #{record.uesravatar,jdbcType=VARCHAR},
+      textValue = #{record.textvalue,jdbcType=VARCHAR},
+      filmScore = #{record.filmscore,jdbcType=DOUBLE},
+      filmStars = #{record.filmstars,jdbcType=INTEGER}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="online.wenmeng.bean.Comments">
+    update comments
+    <set>
+      <if test="userid != null">
+        userId = #{userid,jdbcType=INTEGER},
+      </if>
+      <if test="moveid != null">
+        moveId = #{moveid,jdbcType=INTEGER},
+      </if>
+      <if test="uesravatar != null">
+        uesrAvatar = #{uesravatar,jdbcType=VARCHAR},
+      </if>
+      <if test="textvalue != null">
+        textValue = #{textvalue,jdbcType=VARCHAR},
+      </if>
+      <if test="filmscore != null">
+        filmScore = #{filmscore,jdbcType=DOUBLE},
+      </if>
+      <if test="filmstars != null">
+        filmStars = #{filmstars,jdbcType=INTEGER},
+      </if>
+    </set>
+    where commentsId = #{commentsid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="online.wenmeng.bean.Comments">
+    update comments
+    set userId = #{userid,jdbcType=INTEGER},
+      moveId = #{moveid,jdbcType=INTEGER},
+      uesrAvatar = #{uesravatar,jdbcType=VARCHAR},
+      textValue = #{textvalue,jdbcType=VARCHAR},
+      filmScore = #{filmscore,jdbcType=DOUBLE},
+      filmStars = #{filmstars,jdbcType=INTEGER}
+    where commentsId = #{commentsid,jdbcType=INTEGER}
+  </update>
+</mapper>
