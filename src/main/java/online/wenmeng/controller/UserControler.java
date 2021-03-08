@@ -46,4 +46,32 @@ public class UserControler {
     }
 
 
+    /**
+     * 查询个人信息
+     */
+    @RequestMapping("/getUserInfo/{userId}")
+    public Map<String,Object> getUserInfo(int userId){
+        return userService.getUserInfo(userId);
+    }
+
+
+    /**
+     * 查询个人信息
+     */
+    @RequestMapping("/getUserInfo")
+    public Map<String,Object> getUserInfo(HttpSession session){
+        return userService.getUserInfo(session);
+    }
+
+    /**
+     * 修改个人信息，只能修改登录的用户信息
+     * @param gender 性别
+     * @param qq    QQ号
+     * @param phone 手机号
+     * @return  返回更新后的用户信息
+     */
+    @RequestMapping("/changeUserInfo/{gender}/{qq}/{phone}")
+    public Map<String,Object> changeUserInfo(HttpSession session,@PathVariable("gender") String gender,@PathVariable("qq") String qq ,@PathVariable("phone") String phone){
+        return userService.changeUserInfo(session,gender,qq, phone);
+    }
 }

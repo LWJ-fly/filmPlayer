@@ -8,9 +8,11 @@ import online.wenmeng.dao.FilmuserMapper;
 import online.wenmeng.exception.ServerException;
 import online.wenmeng.utils.HttpsRequest;
 import online.wenmeng.utils.MyUtils;
+import online.wenmeng.utils.TransitionUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.servlet.ServletRequest;
 import javax.servlet.http.HttpSession;
 import java.util.Map;
 
@@ -64,5 +66,37 @@ public class UserService {
     }
 
 
+    public Map<String, Object> getUserInfo(int userId) {
+        Filmuser filmuser = filmuserMapper.selectByPrimaryKey(userId);
+        return MyUtils.getNewMap(Config.SUCCESS,null,null,filmuser);
+    }
 
+
+    public Map<String, Object> getUserInfo(HttpSession session) {
+        //获取session中的信息
+        Map<String,Object> attribute = (Map<String, Object>) session.getAttribute(Config.userInfoInRun);
+        if (attribute!=null){
+            Integer openId = TransitionUtil.transitionType(attribute.get(Config.Openid),int.class);
+            Filmuser filmuser = filmuserMapper.selectByPrimaryKey(openId);
+            return MyUtils.getNewMap(Config.SUCCESS,null,null,filmuser);
+        }
+        return MyUtils.getNewMap(Config.ERROR,Config.LOGIN,"No login information",null);
+    }
+
+    public Map<String, Object> changeUserInfo(HttpSession session, String gender, String qq, String phone) {
+        //获取session中的信息
+        Map<String,Object> attribute = (Map<String, Object>) session.getAttribute(Config.userInfoInRun);
+        if (attribute!=null){
+            Integer openId = TransitionUtil.transitionType(attribute.get(Config.Openid),int.class);
+            Filmuser filmuser = filmuserMapper.selectByPrimaryKey(openId);
+            filmuser.setGerder(gender);
+            filmuser.setQq(qq);
+            filmuser.setPhone(phone);
+            int i = filmuserMapper.updateByPrimaryKey(filmuser);
+            if (i>0){
+                return MyUtils.getNewMap(Config.SUCCESS,null,null,filmuser);
+            }
+        }
+        return MyUtils.getNewMap(Config.ERROR,Config.LOGIN,"No login information",null);
+    }
 }
