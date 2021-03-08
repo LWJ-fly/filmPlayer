@@ -50,7 +50,7 @@ public class UserControler {
      * 查询个人信息
      */
     @RequestMapping("/getUserInfo/{userId}")
-    public Map<String,Object> getUserInfo(int userId){
+    public Map<String,Object> getUserInfo(@PathVariable("userId") int userId){
         return userService.getUserInfo(userId);
     }
 
