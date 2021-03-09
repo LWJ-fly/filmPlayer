@@ -11,7 +11,7 @@ public class Discussion {
 
     private String content;
 
-    private String filmcount;
+    private Integer filmcount;
 
     private Date starttime;
 
@@ -47,12 +47,12 @@ public class Discussion {
         this.content = content == null ? null : content.trim();
     }
 
-    public String getFilmcount() {
+    public Integer getFilmcount() {
         return filmcount;
     }
 
-    public void setFilmcount(String filmcount) {
-        this.filmcount = filmcount == null ? null : filmcount.trim();
+    public void setFilmcount(Integer filmcount) {
+        this.filmcount = filmcount;
     }
 
     public Date getStarttime() {

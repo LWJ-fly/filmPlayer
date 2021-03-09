@@ -375,62 +375,52 @@ public class DiscussionExample {
             return (Criteria) this;
         }
 
-        public Criteria andFilmcountEqualTo(String value) {
+        public Criteria andFilmcountEqualTo(Integer value) {
             addCriterion("filmCount =", value, "filmcount");
             return (Criteria) this;
         }
 
-        public Criteria andFilmcountNotEqualTo(String value) {
+        public Criteria andFilmcountNotEqualTo(Integer value) {
             addCriterion("filmCount <>", value, "filmcount");
             return (Criteria) this;
         }
 
-        public Criteria andFilmcountGreaterThan(String value) {
+        public Criteria andFilmcountGreaterThan(Integer value) {
             addCriterion("filmCount >", value, "filmcount");
             return (Criteria) this;
         }
 
-        public Criteria andFilmcountGreaterThanOrEqualTo(String value) {
+        public Criteria andFilmcountGreaterThanOrEqualTo(Integer value) {
             addCriterion("filmCount >=", value, "filmcount");
             return (Criteria) this;
         }
 
-        public Criteria andFilmcountLessThan(String value) {
+        public Criteria andFilmcountLessThan(Integer value) {
             addCriterion("filmCount <", value, "filmcount");
             return (Criteria) this;
         }
 
-        public Criteria andFilmcountLessThanOrEqualTo(String value) {
+        public Criteria andFilmcountLessThanOrEqualTo(Integer value) {
             addCriterion("filmCount <=", value, "filmcount");
             return (Criteria) this;
         }
 
-        public Criteria andFilmcountLike(String value) {
-            addCriterion("filmCount like", value, "filmcount");
-            return (Criteria) this;
-        }
-
-        public Criteria andFilmcountNotLike(String value) {
-            addCriterion("filmCount not like", value, "filmcount");
-            return (Criteria) this;
-        }
-
-        public Criteria andFilmcountIn(List<String> values) {
+        public Criteria andFilmcountIn(List<Integer> values) {
             addCriterion("filmCount in", values, "filmcount");
             return (Criteria) this;
         }
 
-        public Criteria andFilmcountNotIn(List<String> values) {
+        public Criteria andFilmcountNotIn(List<Integer> values) {
             addCriterion("filmCount not in", values, "filmcount");
             return (Criteria) this;
         }
 
-        public Criteria andFilmcountBetween(String value1, String value2) {
+        public Criteria andFilmcountBetween(Integer value1, Integer value2) {
             addCriterion("filmCount between", value1, value2, "filmcount");
             return (Criteria) this;
         }
 
-        public Criteria andFilmcountNotBetween(String value1, String value2) {
+        public Criteria andFilmcountNotBetween(Integer value1, Integer value2) {
             addCriterion("filmCount not between", value1, value2, "filmcount");
             return (Criteria) this;
         }
