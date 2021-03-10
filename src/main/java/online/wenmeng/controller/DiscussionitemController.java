@@ -7,10 +7,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
+import javax.servlet.http.HttpSession;
 import java.util.Map;
 
-@Controller
+@RestController
 public class DiscussionitemController {
 
     @Autowired
@@ -41,7 +43,7 @@ public class DiscussionitemController {
      * 返回：返回此id讨论贴的所有回复（调用getDiscussionInfo(discussionId)，同时调用评论增加addDiscussionCount(dissionId)）
      */
     @RequestMapping("addDiscussionInfo/{discussionitem}")
-    public Map<String,Object> addDiscussionInfo(@PathVariable("discussionitem") Discussionitem discussionitem) throws ParameterErrorException {
+    public Map<String,Object> addDiscussionInfo(HttpSession session, @PathVariable("discussionitem") Discussionitem discussionitem) throws ParameterErrorException {
         return discussionitemService.addDiscussionCount(discussionitem);
     }
 

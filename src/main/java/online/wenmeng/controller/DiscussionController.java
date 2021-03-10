@@ -6,9 +6,12 @@ import online.wenmeng.service.DiscussionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
+import javax.servlet.http.HttpSession;
 import java.util.Map;
 
+@RestController
 public class DiscussionController {
 
     @Autowired
@@ -47,7 +50,7 @@ public class DiscussionController {
      * 返回：所有讨论贴信息（调用getDiscussion()）
      */
     @RequestMapping("addDiscussion/{discussion}")
-    public Map<String,Object> addDiscussion(@PathVariable("discussion") Discussion discussion) throws ParameterErrorException {
+    public Map<String,Object> addDiscussion(HttpSession session, @PathVariable("discussion") Discussion discussion) throws ParameterErrorException {
         return discussionService.addDiscussion(discussion);
     }
 

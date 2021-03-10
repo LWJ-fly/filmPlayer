@@ -8,10 +8,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
+import javax.servlet.http.HttpSession;
 import java.util.Map;
 
-@Controller
+@RestController
 public class MovieController {
     
     @Autowired
@@ -83,7 +85,7 @@ public class MovieController {
      * 注意：此方法作用 评论个数+1，只在你后台调用
      */
     @RequestMapping("addMovieCommentCount/{movieId}")
-    public Map<String,Object> addMovieCommentCount(@PathVariable("movieId") int movieId) throws ParameterErrorException {
+    public Map<String,Object> addMovieCommentCount(HttpSession session,@PathVariable("movieId") int movieId) throws ParameterErrorException {
         return movieService.addMovieCommentCount(movieId);
 
     }
@@ -97,7 +99,7 @@ public class MovieController {
      * 返回：当前电影所有评论（调用getMovieComment(movieId)，同时调用评论数增加的方法addMovieCommentCount(movieId)）
      */
     @RequestMapping("addMovieComment/{comments}")
-    public Map<String,Object> addMovieComment(@PathVariable("comments") Comments comments) throws ParameterErrorException {
+    public Map<String,Object> addMovieComment(HttpSession session,@PathVariable("comments") Comments comments) throws ParameterErrorException {
         return movieService.addMovieComment(comments);
 
     }

@@ -6,10 +6,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
+import javax.servlet.http.HttpSession;
 import java.util.Map;
 
-@Controller
+@RestController
 public class CommentController {
 
     @Autowired
@@ -38,7 +40,7 @@ public class CommentController {
      * 返回：不用返回任何东西
      */
     @RequestMapping("setStars/{commentsId}/{stars}")
-    public Map<String,Object> setStars(@PathVariable("commentsId") int commentsId,@PathVariable("stars") int stars) throws ParameterErrorException {
+    public Map<String,Object> setStars(HttpSession session,@PathVariable("commentsId") int commentsId, @PathVariable("stars") int stars) throws ParameterErrorException {
         return commentService.setStars(commentsId,stars);
     }
 

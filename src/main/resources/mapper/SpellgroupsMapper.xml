@@ -3,7 +3,7 @@
 <mapper namespace="online.wenmeng.dao.SpellgroupsMapper">
   <resultMap id="BaseResultMap" type="online.wenmeng.bean.Spellgroups">
     <id column="spellGroupId" jdbcType="INTEGER" property="spellgroupid" />
-    <result column="userId" jdbcType="INTEGER" property="userid" />
+    <result column="userId" jdbcType="VARCHAR" property="userid" />
     <result column="filmTitle" jdbcType="VARCHAR" property="filmtitle" />
     <result column="content" jdbcType="VARCHAR" property="content" />
     <result column="filmCount" jdbcType="INTEGER" property="filmcount" />
@@ -106,7 +106,7 @@
     insert into spellgroups (spellGroupId, userId, filmTitle, 
       content, filmCount, realCount, 
       startTime, endTime)
-    values (#{spellgroupid,jdbcType=INTEGER}, #{userid,jdbcType=INTEGER}, #{filmtitle,jdbcType=VARCHAR}, 
+    values (#{spellgroupid,jdbcType=INTEGER}, #{userid,jdbcType=VARCHAR}, #{filmtitle,jdbcType=VARCHAR}, 
       #{content,jdbcType=VARCHAR}, #{filmcount,jdbcType=INTEGER}, #{realcount,jdbcType=INTEGER}, 
       #{starttime,jdbcType=TIMESTAMP}, #{endtime,jdbcType=TIMESTAMP})
   </insert>
@@ -143,7 +143,7 @@
         #{spellgroupid,jdbcType=INTEGER},
       </if>
       <if test="userid != null">
-        #{userid,jdbcType=INTEGER},
+        #{userid,jdbcType=VARCHAR},
       </if>
       <if test="filmtitle != null">
         #{filmtitle,jdbcType=VARCHAR},
@@ -178,7 +178,7 @@
         spellGroupId = #{record.spellgroupid,jdbcType=INTEGER},
       </if>
       <if test="record.userid != null">
-        userId = #{record.userid,jdbcType=INTEGER},
+        userId = #{record.userid,jdbcType=VARCHAR},
       </if>
       <if test="record.filmtitle != null">
         filmTitle = #{record.filmtitle,jdbcType=VARCHAR},
@@ -206,7 +206,7 @@
   <update id="updateByExample" parameterType="map">
     update spellgroups
     set spellGroupId = #{record.spellgroupid,jdbcType=INTEGER},
-      userId = #{record.userid,jdbcType=INTEGER},
+      userId = #{record.userid,jdbcType=VARCHAR},
       filmTitle = #{record.filmtitle,jdbcType=VARCHAR},
       content = #{record.content,jdbcType=VARCHAR},
       filmCount = #{record.filmcount,jdbcType=INTEGER},
@@ -221,7 +221,7 @@
     update spellgroups
     <set>
       <if test="userid != null">
-        userId = #{userid,jdbcType=INTEGER},
+        userId = #{userid,jdbcType=VARCHAR},
       </if>
       <if test="filmtitle != null">
         filmTitle = #{filmtitle,jdbcType=VARCHAR},
@@ -246,7 +246,7 @@
   </update>
   <update id="updateByPrimaryKey" parameterType="online.wenmeng.bean.Spellgroups">
     update spellgroups
-    set userId = #{userid,jdbcType=INTEGER},
+    set userId = #{userid,jdbcType=VARCHAR},
       filmTitle = #{filmtitle,jdbcType=VARCHAR},
       content = #{content,jdbcType=VARCHAR},
       filmCount = #{filmcount,jdbcType=INTEGER},

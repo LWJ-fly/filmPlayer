@@ -7,9 +7,11 @@ import online.wenmeng.dao.DiscussionMapper;
 import online.wenmeng.exception.ParameterErrorException;
 import online.wenmeng.utils.MyUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.Map;
 
+@Service
 public class DiscussionService {
     
     @Autowired

@@ -5,7 +5,7 @@ import java.util.Date;
 public class Spellgroups {
     private Integer spellgroupid;
 
-    private Integer userid;
+    private String userid;
 
     private String filmtitle;
 
@@ -27,12 +27,12 @@ public class Spellgroups {
         this.spellgroupid = spellgroupid;
     }
 
-    public Integer getUserid() {
+    public String getUserid() {
         return userid;
     }
 
-    public void setUserid(Integer userid) {
-        this.userid = userid;
+    public void setUserid(String userid) {
+        this.userid = userid == null ? null : userid.trim();
     }
 
     public String getFilmtitle() {
