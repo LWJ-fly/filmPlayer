@@ -27,6 +27,8 @@ public class Movies {
 
     private Integer commentcounts;
 
+    private Integer scorenum;
+
     public Integer getMoveid() {
         return moveid;
     }
@@ -121,5 +123,13 @@ public class Movies {
 
     public void setCommentcounts(Integer commentcounts) {
         this.commentcounts = commentcounts;
+    }
+
+    public Integer getScorenum() {
+        return scorenum;
+    }
+
+    public void setScorenum(Integer scorenum) {
+        this.scorenum = scorenum;
     }
 }

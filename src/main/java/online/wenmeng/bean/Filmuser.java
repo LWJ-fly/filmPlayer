@@ -13,6 +13,9 @@ public class Filmuser {
 
     private String phone;
 
+    public Filmuser() {
+    }
+
     public Filmuser(Integer userid, String username, String useravatar, String gerder, String qq, String phone) {
         this.userid = userid;
         this.username = username;

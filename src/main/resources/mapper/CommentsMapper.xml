@@ -9,6 +9,8 @@
     <result column="textValue" jdbcType="VARCHAR" property="textvalue" />
     <result column="filmScore" jdbcType="DOUBLE" property="filmscore" />
     <result column="filmStars" jdbcType="INTEGER" property="filmstars" />
+    <result column="commentsTime" jdbcType="TIMESTAMP" property="commentstime" />
+    <result column="username" jdbcType="VARCHAR" property="username" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -69,7 +71,8 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    commentsId, userId, moveId, uesrAvatar, textValue, filmScore, filmStars
+    commentsId, userId, moveId, uesrAvatar, textValue, filmScore, filmStars, commentsTime, 
+    username
   </sql>
   <select id="selectByExample" parameterType="online.wenmeng.bean.CommentsExample" resultMap="BaseResultMap">
     select
@@ -104,10 +107,12 @@
   <insert id="insert" parameterType="online.wenmeng.bean.Comments">
     insert into comments (commentsId, userId, moveId, 
       uesrAvatar, textValue, filmScore, 
-      filmStars)
+      filmStars, commentsTime, username
+      )
     values (#{commentsid,jdbcType=INTEGER}, #{userid,jdbcType=INTEGER}, #{moveid,jdbcType=INTEGER}, 
       #{uesravatar,jdbcType=VARCHAR}, #{textvalue,jdbcType=VARCHAR}, #{filmscore,jdbcType=DOUBLE}, 
-      #{filmstars,jdbcType=INTEGER})
+      #{filmstars,jdbcType=INTEGER}, #{commentstime,jdbcType=TIMESTAMP}, #{username,jdbcType=VARCHAR}
+      )
   </insert>
   <insert id="insertSelective" parameterType="online.wenmeng.bean.Comments">
     insert into comments
@@ -133,6 +138,12 @@
       <if test="filmstars != null">
         filmStars,
       </if>
+      <if test="commentstime != null">
+        commentsTime,
+      </if>
+      <if test="username != null">
+        username,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="commentsid != null">
@@ -155,6 +166,12 @@
       </if>
       <if test="filmstars != null">
         #{filmstars,jdbcType=INTEGER},
+      </if>
+      <if test="commentstime != null">
+        #{commentstime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="username != null">
+        #{username,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
@@ -188,6 +205,12 @@
       <if test="record.filmstars != null">
         filmStars = #{record.filmstars,jdbcType=INTEGER},
       </if>
+      <if test="record.commentstime != null">
+        commentsTime = #{record.commentstime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.username != null">
+        username = #{record.username,jdbcType=VARCHAR},
+      </if>
     </set>
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
@@ -201,7 +224,9 @@
       uesrAvatar = #{record.uesravatar,jdbcType=VARCHAR},
       textValue = #{record.textvalue,jdbcType=VARCHAR},
       filmScore = #{record.filmscore,jdbcType=DOUBLE},
-      filmStars = #{record.filmstars,jdbcType=INTEGER}
+      filmStars = #{record.filmstars,jdbcType=INTEGER},
+      commentsTime = #{record.commentstime,jdbcType=TIMESTAMP},
+      username = #{record.username,jdbcType=VARCHAR}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -227,6 +252,12 @@
       <if test="filmstars != null">
         filmStars = #{filmstars,jdbcType=INTEGER},
       </if>
+      <if test="commentstime != null">
+        commentsTime = #{commentstime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="username != null">
+        username = #{username,jdbcType=VARCHAR},
+      </if>
     </set>
     where commentsId = #{commentsid,jdbcType=INTEGER}
   </update>
@@ -237,7 +268,9 @@
       uesrAvatar = #{uesravatar,jdbcType=VARCHAR},
       textValue = #{textvalue,jdbcType=VARCHAR},
       filmScore = #{filmscore,jdbcType=DOUBLE},
-      filmStars = #{filmstars,jdbcType=INTEGER}
+      filmStars = #{filmstars,jdbcType=INTEGER},
+      commentsTime = #{commentstime,jdbcType=TIMESTAMP},
+      username = #{username,jdbcType=VARCHAR}
     where commentsId = #{commentsid,jdbcType=INTEGER}
   </update>
 </mapper>

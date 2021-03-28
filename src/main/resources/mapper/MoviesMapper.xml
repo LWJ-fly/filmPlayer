@@ -14,6 +14,7 @@
     <result column="filmDescribe" jdbcType="VARCHAR" property="filmdescribe" />
     <result column="filmPlace" jdbcType="VARCHAR" property="filmplace" />
     <result column="commentCounts" jdbcType="INTEGER" property="commentcounts" />
+    <result column="scoreNum" jdbcType="INTEGER" property="scorenum" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -75,7 +76,7 @@
   </sql>
   <sql id="Base_Column_List">
     moveId, moveName, moveAvatar, startData, filmTime, filmScore, director, actors, filmType, 
-    filmDescribe, filmPlace, commentCounts
+    filmDescribe, filmPlace, commentCounts, scoreNum
   </sql>
   <select id="selectByExample" parameterType="online.wenmeng.bean.MoviesExample" resultMap="BaseResultMap">
     select
@@ -111,13 +112,13 @@
     insert into movies (moveId, moveName, moveAvatar, 
       startData, filmTime, filmScore, 
       director, actors, filmType, 
-      filmDescribe, filmPlace, commentCounts
-      )
+      filmDescribe, filmPlace, commentCounts, 
+      scoreNum)
     values (#{moveid,jdbcType=INTEGER}, #{movename,jdbcType=VARCHAR}, #{moveavatar,jdbcType=VARCHAR}, 
       #{startdata,jdbcType=VARCHAR}, #{filmtime,jdbcType=TIMESTAMP}, #{filmscore,jdbcType=DOUBLE}, 
       #{director,jdbcType=VARCHAR}, #{actors,jdbcType=VARCHAR}, #{filmtype,jdbcType=VARCHAR}, 
-      #{filmdescribe,jdbcType=VARCHAR}, #{filmplace,jdbcType=VARCHAR}, #{commentcounts,jdbcType=INTEGER}
-      )
+      #{filmdescribe,jdbcType=VARCHAR}, #{filmplace,jdbcType=VARCHAR}, #{commentcounts,jdbcType=INTEGER}, 
+      #{scorenum,jdbcType=INTEGER})
   </insert>
   <insert id="insertSelective" parameterType="online.wenmeng.bean.Movies">
     insert into movies
@@ -158,6 +159,9 @@
       <if test="commentcounts != null">
         commentCounts,
       </if>
+      <if test="scorenum != null">
+        scoreNum,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="moveid != null">
@@ -195,6 +199,9 @@
       </if>
       <if test="commentcounts != null">
         #{commentcounts,jdbcType=INTEGER},
+      </if>
+      <if test="scorenum != null">
+        #{scorenum,jdbcType=INTEGER},
       </if>
     </trim>
   </insert>
@@ -243,6 +250,9 @@
       <if test="record.commentcounts != null">
         commentCounts = #{record.commentcounts,jdbcType=INTEGER},
       </if>
+      <if test="record.scorenum != null">
+        scoreNum = #{record.scorenum,jdbcType=INTEGER},
+      </if>
     </set>
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
@@ -261,7 +271,8 @@
       filmType = #{record.filmtype,jdbcType=VARCHAR},
       filmDescribe = #{record.filmdescribe,jdbcType=VARCHAR},
       filmPlace = #{record.filmplace,jdbcType=VARCHAR},
-      commentCounts = #{record.commentcounts,jdbcType=INTEGER}
+      commentCounts = #{record.commentcounts,jdbcType=INTEGER},
+      scoreNum = #{record.scorenum,jdbcType=INTEGER}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -302,6 +313,9 @@
       <if test="commentcounts != null">
         commentCounts = #{commentcounts,jdbcType=INTEGER},
       </if>
+      <if test="scorenum != null">
+        scoreNum = #{scorenum,jdbcType=INTEGER},
+      </if>
     </set>
     where moveId = #{moveid,jdbcType=INTEGER}
   </update>
@@ -317,7 +331,8 @@
       filmType = #{filmtype,jdbcType=VARCHAR},
       filmDescribe = #{filmdescribe,jdbcType=VARCHAR},
       filmPlace = #{filmplace,jdbcType=VARCHAR},
-      commentCounts = #{commentcounts,jdbcType=INTEGER}
+      commentCounts = #{commentcounts,jdbcType=INTEGER},
+      scoreNum = #{scorenum,jdbcType=INTEGER}
     where moveId = #{moveid,jdbcType=INTEGER}
   </update>
 </mapper>

@@ -1,5 +1,7 @@
 package online.wenmeng.bean;
 
+import java.util.Date;
+
 public class Comments {
     private Integer commentsid;
 
@@ -14,6 +16,10 @@ public class Comments {
     private Double filmscore;
 
     private Integer filmstars;
+
+    private Date commentstime;
+
+    private String username;
 
     public Integer getCommentsid() {
         return commentsid;
@@ -69,5 +75,21 @@ public class Comments {
 
     public void setFilmstars(Integer filmstars) {
         this.filmstars = filmstars;
+    }
+
+    public Date getCommentstime() {
+        return commentstime;
+    }
+
+    public void setCommentstime(Date commentstime) {
+        this.commentstime = commentstime;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username == null ? null : username.trim();
     }
 }

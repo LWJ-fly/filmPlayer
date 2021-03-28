@@ -904,6 +904,66 @@ public class MoviesExample {
             addCriterion("commentCounts not between", value1, value2, "commentcounts");
             return (Criteria) this;
         }
+
+        public Criteria andScorenumIsNull() {
+            addCriterion("scoreNum is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andScorenumIsNotNull() {
+            addCriterion("scoreNum is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andScorenumEqualTo(Integer value) {
+            addCriterion("scoreNum =", value, "scorenum");
+            return (Criteria) this;
+        }
+
+        public Criteria andScorenumNotEqualTo(Integer value) {
+            addCriterion("scoreNum <>", value, "scorenum");
+            return (Criteria) this;
+        }
+
+        public Criteria andScorenumGreaterThan(Integer value) {
+            addCriterion("scoreNum >", value, "scorenum");
+            return (Criteria) this;
+        }
+
+        public Criteria andScorenumGreaterThanOrEqualTo(Integer value) {
+            addCriterion("scoreNum >=", value, "scorenum");
+            return (Criteria) this;
+        }
+
+        public Criteria andScorenumLessThan(Integer value) {
+            addCriterion("scoreNum <", value, "scorenum");
+            return (Criteria) this;
+        }
+
+        public Criteria andScorenumLessThanOrEqualTo(Integer value) {
+            addCriterion("scoreNum <=", value, "scorenum");
+            return (Criteria) this;
+        }
+
+        public Criteria andScorenumIn(List<Integer> values) {
+            addCriterion("scoreNum in", values, "scorenum");
+            return (Criteria) this;
+        }
+
+        public Criteria andScorenumNotIn(List<Integer> values) {
+            addCriterion("scoreNum not in", values, "scorenum");
+            return (Criteria) this;
+        }
+
+        public Criteria andScorenumBetween(Integer value1, Integer value2) {
+            addCriterion("scoreNum between", value1, value2, "scorenum");
+            return (Criteria) this;
+        }
+
+        public Criteria andScorenumNotBetween(Integer value1, Integer value2) {
+            addCriterion("scoreNum not between", value1, value2, "scorenum");
+            return (Criteria) this;
+        }
     }
 
     public static class Criteria extends GeneratedCriteria {

@@ -13,6 +13,10 @@ public class Discussionitem {
 
     private Date sendtime;
 
+    private String uesravatar;
+
+    private String username;
+
     public Integer getItemid() {
         return itemid;
     }
@@ -51,5 +55,21 @@ public class Discussionitem {
 
     public void setSendtime(Date sendtime) {
         this.sendtime = sendtime;
+    }
+
+    public String getUesravatar() {
+        return uesravatar;
+    }
+
+    public void setUesravatar(String uesravatar) {
+        this.uesravatar = uesravatar == null ? null : uesravatar.trim();
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username == null ? null : username.trim();
     }
 }

@@ -6,8 +6,10 @@
     <result column="mainUserId" jdbcType="INTEGER" property="mainuserid" />
     <result column="filmTitle" jdbcType="VARCHAR" property="filmtitle" />
     <result column="content" jdbcType="VARCHAR" property="content" />
-    <result column="filmCount" jdbcType="INTEGER" property="filmcount" />
+    <result column="filmCount" jdbcType="VARCHAR" property="filmcount" />
     <result column="startTime" jdbcType="TIMESTAMP" property="starttime" />
+    <result column="uesrAvatar" jdbcType="VARCHAR" property="uesravatar" />
+    <result column="username" jdbcType="VARCHAR" property="username" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -68,7 +70,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    discussionId, mainUserId, filmTitle, content, filmCount, startTime
+    discussionId, mainUserId, filmTitle, content, filmCount, startTime, uesrAvatar, username
   </sql>
   <select id="selectByExample" parameterType="online.wenmeng.bean.DiscussionExample" resultMap="BaseResultMap">
     select
@@ -102,11 +104,11 @@
   </delete>
   <insert id="insert" parameterType="online.wenmeng.bean.Discussion">
     insert into discussion (discussionId, mainUserId, filmTitle, 
-      content, filmCount, startTime
-      )
+      content, filmCount, startTime, 
+      uesrAvatar, username)
     values (#{discussionid,jdbcType=INTEGER}, #{mainuserid,jdbcType=INTEGER}, #{filmtitle,jdbcType=VARCHAR}, 
-      #{content,jdbcType=VARCHAR}, #{filmcount,jdbcType=INTEGER}, #{starttime,jdbcType=TIMESTAMP}
-      )
+      #{content,jdbcType=VARCHAR}, #{filmcount,jdbcType=VARCHAR}, #{starttime,jdbcType=TIMESTAMP}, 
+      #{uesravatar,jdbcType=VARCHAR}, #{username,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="online.wenmeng.bean.Discussion">
     insert into discussion
@@ -129,6 +131,12 @@
       <if test="starttime != null">
         startTime,
       </if>
+      <if test="uesravatar != null">
+        uesrAvatar,
+      </if>
+      <if test="username != null">
+        username,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="discussionid != null">
@@ -144,10 +152,16 @@
         #{content,jdbcType=VARCHAR},
       </if>
       <if test="filmcount != null">
-        #{filmcount,jdbcType=INTEGER},
+        #{filmcount,jdbcType=VARCHAR},
       </if>
       <if test="starttime != null">
         #{starttime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="uesravatar != null">
+        #{uesravatar,jdbcType=VARCHAR},
+      </if>
+      <if test="username != null">
+        #{username,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
@@ -173,10 +187,16 @@
         content = #{record.content,jdbcType=VARCHAR},
       </if>
       <if test="record.filmcount != null">
-        filmCount = #{record.filmcount,jdbcType=INTEGER},
+        filmCount = #{record.filmcount,jdbcType=VARCHAR},
       </if>
       <if test="record.starttime != null">
         startTime = #{record.starttime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.uesravatar != null">
+        uesrAvatar = #{record.uesravatar,jdbcType=VARCHAR},
+      </if>
+      <if test="record.username != null">
+        username = #{record.username,jdbcType=VARCHAR},
       </if>
     </set>
     <if test="_parameter != null">
@@ -189,8 +209,10 @@
       mainUserId = #{record.mainuserid,jdbcType=INTEGER},
       filmTitle = #{record.filmtitle,jdbcType=VARCHAR},
       content = #{record.content,jdbcType=VARCHAR},
-      filmCount = #{record.filmcount,jdbcType=INTEGER},
-      startTime = #{record.starttime,jdbcType=TIMESTAMP}
+      filmCount = #{record.filmcount,jdbcType=VARCHAR},
+      startTime = #{record.starttime,jdbcType=TIMESTAMP},
+      uesrAvatar = #{record.uesravatar,jdbcType=VARCHAR},
+      username = #{record.username,jdbcType=VARCHAR}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -208,10 +230,16 @@
         content = #{content,jdbcType=VARCHAR},
       </if>
       <if test="filmcount != null">
-        filmCount = #{filmcount,jdbcType=INTEGER},
+        filmCount = #{filmcount,jdbcType=VARCHAR},
       </if>
       <if test="starttime != null">
         startTime = #{starttime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="uesravatar != null">
+        uesrAvatar = #{uesravatar,jdbcType=VARCHAR},
+      </if>
+      <if test="username != null">
+        username = #{username,jdbcType=VARCHAR},
       </if>
     </set>
     where discussionId = #{discussionid,jdbcType=INTEGER}
@@ -221,8 +249,10 @@
     set mainUserId = #{mainuserid,jdbcType=INTEGER},
       filmTitle = #{filmtitle,jdbcType=VARCHAR},
       content = #{content,jdbcType=VARCHAR},
-      filmCount = #{filmcount,jdbcType=INTEGER},
-      startTime = #{starttime,jdbcType=TIMESTAMP}
+      filmCount = #{filmcount,jdbcType=VARCHAR},
+      startTime = #{starttime,jdbcType=TIMESTAMP},
+      uesrAvatar = #{uesravatar,jdbcType=VARCHAR},
+      username = #{username,jdbcType=VARCHAR}
     where discussionId = #{discussionid,jdbcType=INTEGER}
   </update>
 </mapper>

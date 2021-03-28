@@ -484,6 +484,146 @@ public class DiscussionExample {
             addCriterion("startTime not between", value1, value2, "starttime");
             return (Criteria) this;
         }
+
+        public Criteria andUesravatarIsNull() {
+            addCriterion("uesrAvatar is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andUesravatarIsNotNull() {
+            addCriterion("uesrAvatar is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andUesravatarEqualTo(String value) {
+            addCriterion("uesrAvatar =", value, "uesravatar");
+            return (Criteria) this;
+        }
+
+        public Criteria andUesravatarNotEqualTo(String value) {
+            addCriterion("uesrAvatar <>", value, "uesravatar");
+            return (Criteria) this;
+        }
+
+        public Criteria andUesravatarGreaterThan(String value) {
+            addCriterion("uesrAvatar >", value, "uesravatar");
+            return (Criteria) this;
+        }
+
+        public Criteria andUesravatarGreaterThanOrEqualTo(String value) {
+            addCriterion("uesrAvatar >=", value, "uesravatar");
+            return (Criteria) this;
+        }
+
+        public Criteria andUesravatarLessThan(String value) {
+            addCriterion("uesrAvatar <", value, "uesravatar");
+            return (Criteria) this;
+        }
+
+        public Criteria andUesravatarLessThanOrEqualTo(String value) {
+            addCriterion("uesrAvatar <=", value, "uesravatar");
+            return (Criteria) this;
+        }
+
+        public Criteria andUesravatarLike(String value) {
+            addCriterion("uesrAvatar like", value, "uesravatar");
+            return (Criteria) this;
+        }
+
+        public Criteria andUesravatarNotLike(String value) {
+            addCriterion("uesrAvatar not like", value, "uesravatar");
+            return (Criteria) this;
+        }
+
+        public Criteria andUesravatarIn(List<String> values) {
+            addCriterion("uesrAvatar in", values, "uesravatar");
+            return (Criteria) this;
+        }
+
+        public Criteria andUesravatarNotIn(List<String> values) {
+            addCriterion("uesrAvatar not in", values, "uesravatar");
+            return (Criteria) this;
+        }
+
+        public Criteria andUesravatarBetween(String value1, String value2) {
+            addCriterion("uesrAvatar between", value1, value2, "uesravatar");
+            return (Criteria) this;
+        }
+
+        public Criteria andUesravatarNotBetween(String value1, String value2) {
+            addCriterion("uesrAvatar not between", value1, value2, "uesravatar");
+            return (Criteria) this;
+        }
+
+        public Criteria andUsernameIsNull() {
+            addCriterion("username is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andUsernameIsNotNull() {
+            addCriterion("username is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andUsernameEqualTo(String value) {
+            addCriterion("username =", value, "username");
+            return (Criteria) this;
+        }
+
+        public Criteria andUsernameNotEqualTo(String value) {
+            addCriterion("username <>", value, "username");
+            return (Criteria) this;
+        }
+
+        public Criteria andUsernameGreaterThan(String value) {
+            addCriterion("username >", value, "username");
+            return (Criteria) this;
+        }
+
+        public Criteria andUsernameGreaterThanOrEqualTo(String value) {
+            addCriterion("username >=", value, "username");
+            return (Criteria) this;
+        }
+
+        public Criteria andUsernameLessThan(String value) {
+            addCriterion("username <", value, "username");
+            return (Criteria) this;
+        }
+
+        public Criteria andUsernameLessThanOrEqualTo(String value) {
+            addCriterion("username <=", value, "username");
+            return (Criteria) this;
+        }
+
+        public Criteria andUsernameLike(String value) {
+            addCriterion("username like", value, "username");
+            return (Criteria) this;
+        }
+
+        public Criteria andUsernameNotLike(String value) {
+            addCriterion("username not like", value, "username");
+            return (Criteria) this;
+        }
+
+        public Criteria andUsernameIn(List<String> values) {
+            addCriterion("username in", values, "username");
+            return (Criteria) this;
+        }
+
+        public Criteria andUsernameNotIn(List<String> values) {
+            addCriterion("username not in", values, "username");
+            return (Criteria) this;
+        }
+
+        public Criteria andUsernameBetween(String value1, String value2) {
+            addCriterion("username between", value1, value2, "username");
+            return (Criteria) this;
+        }
+
+        public Criteria andUsernameNotBetween(String value1, String value2) {
+            addCriterion("username not between", value1, value2, "username");
+            return (Criteria) this;
+        }
     }
 
     public static class Criteria extends GeneratedCriteria {

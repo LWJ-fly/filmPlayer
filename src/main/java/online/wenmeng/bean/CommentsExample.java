@@ -1,6 +1,7 @@
 package online.wenmeng.bean;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class CommentsExample {
@@ -541,6 +542,136 @@ public class CommentsExample {
 
         public Criteria andFilmstarsNotBetween(Integer value1, Integer value2) {
             addCriterion("filmStars not between", value1, value2, "filmstars");
+            return (Criteria) this;
+        }
+
+        public Criteria andCommentstimeIsNull() {
+            addCriterion("commentsTime is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andCommentstimeIsNotNull() {
+            addCriterion("commentsTime is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andCommentstimeEqualTo(Date value) {
+            addCriterion("commentsTime =", value, "commentstime");
+            return (Criteria) this;
+        }
+
+        public Criteria andCommentstimeNotEqualTo(Date value) {
+            addCriterion("commentsTime <>", value, "commentstime");
+            return (Criteria) this;
+        }
+
+        public Criteria andCommentstimeGreaterThan(Date value) {
+            addCriterion("commentsTime >", value, "commentstime");
+            return (Criteria) this;
+        }
+
+        public Criteria andCommentstimeGreaterThanOrEqualTo(Date value) {
+            addCriterion("commentsTime >=", value, "commentstime");
+            return (Criteria) this;
+        }
+
+        public Criteria andCommentstimeLessThan(Date value) {
+            addCriterion("commentsTime <", value, "commentstime");
+            return (Criteria) this;
+        }
+
+        public Criteria andCommentstimeLessThanOrEqualTo(Date value) {
+            addCriterion("commentsTime <=", value, "commentstime");
+            return (Criteria) this;
+        }
+
+        public Criteria andCommentstimeIn(List<Date> values) {
+            addCriterion("commentsTime in", values, "commentstime");
+            return (Criteria) this;
+        }
+
+        public Criteria andCommentstimeNotIn(List<Date> values) {
+            addCriterion("commentsTime not in", values, "commentstime");
+            return (Criteria) this;
+        }
+
+        public Criteria andCommentstimeBetween(Date value1, Date value2) {
+            addCriterion("commentsTime between", value1, value2, "commentstime");
+            return (Criteria) this;
+        }
+
+        public Criteria andCommentstimeNotBetween(Date value1, Date value2) {
+            addCriterion("commentsTime not between", value1, value2, "commentstime");
+            return (Criteria) this;
+        }
+
+        public Criteria andUsernameIsNull() {
+            addCriterion("username is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andUsernameIsNotNull() {
+            addCriterion("username is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andUsernameEqualTo(String value) {
+            addCriterion("username =", value, "username");
+            return (Criteria) this;
+        }
+
+        public Criteria andUsernameNotEqualTo(String value) {
+            addCriterion("username <>", value, "username");
+            return (Criteria) this;
+        }
+
+        public Criteria andUsernameGreaterThan(String value) {
+            addCriterion("username >", value, "username");
+            return (Criteria) this;
+        }
+
+        public Criteria andUsernameGreaterThanOrEqualTo(String value) {
+            addCriterion("username >=", value, "username");
+            return (Criteria) this;
+        }
+
+        public Criteria andUsernameLessThan(String value) {
+            addCriterion("username <", value, "username");
+            return (Criteria) this;
+        }
+
+        public Criteria andUsernameLessThanOrEqualTo(String value) {
+            addCriterion("username <=", value, "username");
+            return (Criteria) this;
+        }
+
+        public Criteria andUsernameLike(String value) {
+            addCriterion("username like", value, "username");
+            return (Criteria) this;
+        }
+
+        public Criteria andUsernameNotLike(String value) {
+            addCriterion("username not like", value, "username");
+            return (Criteria) this;
+        }
+
+        public Criteria andUsernameIn(List<String> values) {
+            addCriterion("username in", values, "username");
+            return (Criteria) this;
+        }
+
+        public Criteria andUsernameNotIn(List<String> values) {
+            addCriterion("username not in", values, "username");
+            return (Criteria) this;
+        }
+
+        public Criteria andUsernameBetween(String value1, String value2) {
+            addCriterion("username between", value1, value2, "username");
+            return (Criteria) this;
+        }
+
+        public Criteria andUsernameNotBetween(String value1, String value2) {
+            addCriterion("username not between", value1, value2, "username");
             return (Criteria) this;
         }
     }
