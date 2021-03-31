@@ -29,6 +29,7 @@ public class BaseService {
         String[] srr = {
                 "exit",
                 "login",
+                "testLogin",
                 "QQLogin"
         };
         for (String s:srr){

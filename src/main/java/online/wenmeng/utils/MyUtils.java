@@ -46,7 +46,7 @@ public class MyUtils {
      * state 状态(success)、action动作、msg消息、data数据
      * @return
      */
-    public static Map<String,Object> getNewMap(String state,String action,String msg,Object data){
+    public static Map<String,Object> getNewMap(String state,Object action,Object msg,Object data){
         HashMap<String, Object> map = new HashMap<>();
         map.put(Config.STATE,state);
         map.put(Config.ACTION,action);
