@@ -13,7 +13,7 @@ import javax.servlet.http.HttpSession;
 import java.util.Map;
 
 @RestController
-public class DiscussionitemController {
+public class DiscussionitemController extends BaseController{
 
     @Autowired
     private DiscussionitemService discussionitemService;
@@ -42,8 +42,8 @@ public class DiscussionitemController {
      *
      * 返回：返回此id讨论贴的所有回复（调用getDiscussionInfo(discussionId)，同时调用评论增加addDiscussionCount(dissionId)）
      */
-    @RequestMapping("addDiscussionInfo/{discussionitem}")
-    public Map<String,Object> addDiscussionInfo(HttpSession session, @PathVariable("discussionitem") Discussionitem discussionitem) throws ParameterErrorException {
+    @RequestMapping("addDiscussionInfo")
+    public Map<String,Object> addDiscussionInfo(HttpSession session, Discussionitem discussionitem) throws ParameterErrorException {
         return discussionitemService.addDiscussionCount(discussionitem);
     }
 

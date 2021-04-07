@@ -1,7 +1,11 @@
 package online.wenmeng.service;
 
+import com.sun.org.apache.bcel.internal.generic.IFNONNULL;
+import online.wenmeng.bean.Filmuser;
 import online.wenmeng.config.Config;
+import online.wenmeng.dao.FilmuserMapper;
 import online.wenmeng.exception.LoginException;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 import org.springframework.web.context.request.RequestContextHolder;
@@ -20,6 +24,9 @@ import java.util.List;
  */
 @Service
 public class BaseService {
+
+    @Autowired
+    private FilmuserMapper filmuserMapper;
 
     /**
      * 放行的方法，不进行校验
@@ -61,5 +68,15 @@ public class BaseService {
     public void permissionsTask(){
         //每日0点清空上日发送邮件的用户
         Config.sendEmailCountMap.clear();
+    }
+    /**
+     * 每五分钟执行一次
+     */
+    @Scheduled(cron = "0 0/55 * * * ? ")
+    public void keepLive(){
+        Filmuser filmuser = filmuserMapper.selectByPrimaryKey(1234);
+        if (filmuser!=null){
+            filmuser.setPhone("123456");
+        }
     }
 }

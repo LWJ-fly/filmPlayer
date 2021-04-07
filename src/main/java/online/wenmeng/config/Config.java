@@ -21,9 +21,9 @@ public class Config {
      * 数据库使用
      */
     public static String splitUsers = ",";
-    public static int carpoolinginfo_ing = 0;//还在拼车中
-    public static int carpoolinginfo_complete = 1;//拼车完成，还不算完结
-    public static int carpoolinginfo_end = 2;//拼车完结，处于历史数据
+    public static int filmPlayerinfo_ing = 0;//还在拼车中
+    public static int filmPlayerinfo_complete = 1;//拼车完成，还不算完结
+    public static int filmPlayerinfo_end = 2;//拼车完结，处于历史数据
 
 
     //出现错误，很有可能是未知错误

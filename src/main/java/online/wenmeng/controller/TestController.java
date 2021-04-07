@@ -11,7 +11,7 @@ import javax.servlet.http.HttpSession;
 import java.util.Map;
 
 @RestController
-public class TestController {
+public class TestController extends BaseController {
 
     @Autowired
     private TestService testService;

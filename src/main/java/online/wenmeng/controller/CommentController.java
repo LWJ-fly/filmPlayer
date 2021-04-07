@@ -12,7 +12,7 @@ import javax.servlet.http.HttpSession;
 import java.util.Map;
 
 @RestController
-public class CommentController {
+public class CommentController extends BaseController {
 
     @Autowired
     private CommentService commentService;

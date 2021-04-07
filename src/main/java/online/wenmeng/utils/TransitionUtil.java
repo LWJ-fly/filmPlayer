@@ -26,7 +26,7 @@ public class TransitionUtil {
      * @return 返回相应的类型转换的对象值
      */
     public static  <T> T transitionType(Object obj, Class<T> t){
-        if (obj==null){
+        if (obj==null||obj.toString().trim().length()==0){
             return null;
         }
         return (T) transition(obj,Integer.parseInt(getObjectType(obj)+""+getClassType(t)));
@@ -63,6 +63,8 @@ public class TransitionUtil {
             case 56:
             case 96:
                 return Long.parseLong(original.toString().trim());
+            case 95:
+                return Integer.parseInt(original.toString().trim());
             case 508:
                 return ((BigDecimal) original).doubleValue();
             default:

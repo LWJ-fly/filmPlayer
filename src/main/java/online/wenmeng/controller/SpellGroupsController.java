@@ -19,7 +19,7 @@ import java.util.Map;
  */
 
 @RestController
-public class SpellGroupsController {
+public class SpellGroupsController extends BaseController {
 
     @Autowired
     private SpellGroupsService spellGroupsService;
@@ -42,8 +42,8 @@ public class SpellGroupsController {
      *
      * 返回：所有团约的信息（调用getSpellGroups()）
      */
-    @RequestMapping("addSpellGroup/{spellGroup}")
-    public Map<String,Object> addSpellGroup(HttpSession session, @PathVariable("spellGroup") Spellgroups spellGroup) throws ParameterErrorException {
+    @RequestMapping("addSpellGroup")
+    public Map<String,Object> addSpellGroup(HttpSession session, Spellgroups spellGroup) throws ParameterErrorException {
         return spellGroupsService.addSpellGroup(spellGroup);
     }
 

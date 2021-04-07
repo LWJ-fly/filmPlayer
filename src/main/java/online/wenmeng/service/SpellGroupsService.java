@@ -73,6 +73,9 @@ public class SpellGroupsService {
             String[] userids = spellgroups.getUserid().split(Config.splitUsers);
             List<Filmuser> filmuserList = new ArrayList<>();
             for (String userid:userids) {
+                if (userid==null||userid.trim().length()==0){
+                    continue;
+                }
                 Filmuser filmuser = filmuserMapper.selectByPrimaryKey(TransitionUtil.transitionType(userid, int.class));
                 if (filmuser!=null){
                     filmuserList.add(filmuser);

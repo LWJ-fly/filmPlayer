@@ -14,7 +14,7 @@ import javax.servlet.http.HttpSession;
 import java.util.Map;
 
 @RestController
-public class MovieController {
+public class MovieController extends BaseController {
     
     @Autowired
     private MovieService movieService;
@@ -60,8 +60,8 @@ public class MovieController {
      *
      * 返回：返回所有电影信息（调用findAllMovies()）
      */
-    @RequestMapping("addMovie/{movies}")
-    public Map<String,Object> addMovie(@PathVariable("movies") Movies movies) throws ParameterErrorException {
+    @RequestMapping("addMovie")
+    public Map<String,Object> addMovie(Movies movies) throws ParameterErrorException {
         return movieService.addMovie(movies);
 
     }
@@ -98,12 +98,10 @@ public class MovieController {
      *
      * 返回：当前电影所有评论（调用getMovieComment(movieId)，同时调用评论数增加的方法addMovieCommentCount(movieId)）
      */
-    @RequestMapping("addMovieComment/{comments}")
-    public Map<String,Object> addMovieComment(HttpSession session,@PathVariable("comments") Comments comments) throws ParameterErrorException {
+    @RequestMapping("addMovieComment")
+    public Map<String,Object> addMovieComment(HttpSession session, Comments comments) throws ParameterErrorException {
         return movieService.addMovieComment(comments);
 
     }
-
-
 
 }
