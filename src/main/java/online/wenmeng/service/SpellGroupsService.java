@@ -90,7 +90,7 @@ public class SpellGroupsService {
         if (spellgroups!=null){
             String userIds = "";
             String[] userids = spellgroups.getUserid().split(Config.splitUsers);
-            for (int i = 0; i < userids.length - 1; i++) {
+            for (int i = 0; i < userids.length; i++) {
                 userIds+=userids[i]+Config.splitUsers;
             }
             userIds+=userids[userids.length-1];
